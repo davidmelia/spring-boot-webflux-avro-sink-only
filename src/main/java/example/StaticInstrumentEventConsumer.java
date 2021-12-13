@@ -1,6 +1,5 @@
-package uk.co.dave.consumer.fxrate.consumer.avro;
+package example;
 
-import java.util.List;
 import java.util.function.Function;
 import org.springframework.context.annotation.Bean;
 import org.springframework.messaging.Message;
@@ -12,11 +11,20 @@ import reactor.core.publisher.Mono;
 public class StaticInstrumentEventConsumer {
 
 
+
+  // @Bean
+  // public Consumer<Flux<Message<AvroFxRateEvent>>> fxRates() {
+  // return events -> events.subscribe(event -> {
+  // System.out.println(event);
+  // });
+  // }
+
+
+
   @Bean
-  public Function<Flux<Message<Object>>, Mono<Void>> test() {
+  public Function<Flux<Message<Object>>, Mono<Void>> fxRates() {
     return events -> events.flatMapSequential(eventList -> {
-      List<Object> eventsList = (List<Object>) eventList.getPayload();
-      System.out.println(eventList);
+      System.out.println("***" + eventList + "***");
       return Mono.empty();
     }, 1).then();
   }
