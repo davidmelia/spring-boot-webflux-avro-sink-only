@@ -1,0 +1,16 @@
+{
+    "name": "AvroFxRateEvent",
+    "type":"record",
+    "namespace": "uk.co.dave.consumer.fxrate.consumer.avro",
+    "fields":[
+        {"name":"from", "type":"string"},
+        {"name":"to", "type":"string"},   
+        {"name":"rate", "type":{
+                  "type": "bytes",
+                  "logicalType": "decimal",
+                  "precision": 7,
+                  "scale": 6
+                }
+            }              
+       ]
+}
