@@ -1,5 +1,6 @@
 package example;
 
+import java.util.List;
 import java.util.function.Function;
 import org.springframework.context.annotation.Bean;
 import org.springframework.messaging.Message;
@@ -12,9 +13,10 @@ import uk.co.dave.consumer.fxrate.consumer.avro.AvroFxRateEvent;
 public class StaticInstrumentEventConsumer {
 
   @Bean
-  public Function<Flux<Message<AvroFxRateEvent>>, Mono<Void>> fxRates() {
+  public Function<Flux<Message<Object>>, Mono<Void>> fxRates() {
     return events -> events.flatMapSequential(event -> {
-      System.out.println("***" + event + "***");
+      List<AvroFxRateEvent> eventBatch = (List<AvroFxRateEvent>) event.getPayload();
+      System.out.println("***" + eventBatch + "***");
       return Mono.empty();
     }, 1).then();
   }
