@@ -1,13 +1,13 @@
-package example;
+package populator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MyApplication {
+public class TestApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(MyApplication.class, args); //
+    SpringApplication.run(TestApplication.class, args); //
   }
 
 }

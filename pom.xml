@@ -6,7 +6,7 @@
 	<parent> 
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-<!-- 		<version>2.5.4</version> -->
+<!-- 		<version>2.5.9</version> -->
 		<version>2.6.4</version>		
 	</parent>
 	<groupId>uk.co.ii</groupId>
@@ -17,11 +17,16 @@
 	<properties>
 	    <sonar.projectKey>${project.artifactId}</sonar.projectKey>
 		<java.version>17</java.version>
+		        <kafka-events.version>2.5.26</kafka-events.version>
 <!-- 		<spring-cloud.version>2020.0.4</spring-cloud.version> -->
 		<spring-cloud.version>2021.0.1</spring-cloud.version>		 
 	</properties> 
 	<dependencies>
-
+       <dependency>
+            <groupId>uk.co.ii.event</groupId>
+            <artifactId>order-management-events</artifactId>
+            <version>${kafka-events.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
@@ -43,7 +48,17 @@
 		  <groupId>org.apache.avro</groupId>
 		  <artifactId>avro</artifactId>
 		  <version>1.10.2</version>
-		</dependency>	                
+		</dependency>	
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>		
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>                        
 	</dependencies>
 
 	<build>
